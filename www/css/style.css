@@ -1,0 +1,34 @@
+body{
+  background-color: #E8D467;
+}
+
+#cabecalho{
+  background-color: #FEC109;
+  text-align: center;
+  padding-top: 10px;
+  padding-botton: 10px;
+}
+
+label, p{
+  margin-top: 20px;
+  color: #555555;
+}
+
+#converter{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#resposta{
+  text-align: center;
+}
+
+#moedas{
+  width: 80vw;
+  height: 25vh;
+}
+
+.simbolo{
+  margin-top: 10px;
+  color: #555555; 
+}
