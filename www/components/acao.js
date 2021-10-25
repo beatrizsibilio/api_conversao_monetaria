@@ -1,5 +1,4 @@
 window.onload = function(){
-  var imgReais = "./img/real.jpg", imgDolar = "./img/dolar.jpg", imgCanada = "./img/dolarCanada.jpg", imgEuro = "./img/euro.jpg", imgArgentina = "./img/pesoArgentina.jpg", imgIene = "./img/iene.jpeg";
   
   const converter = document.querySelector("#converter");
   
@@ -24,8 +23,13 @@ window.onload = function(){
       moeda = " dólares canadenses";
     }
 
+    function retorno(){
+
+    }
+
     valorConvertido = valor / cotacao;
-    alert("Você tem "+ parseFloat(valorConvertido.toFixed(2))+ moeda);
+
+    navigator.notification.alert("Você tem "+ parseFloat(valorConvertido.toFixed(2))+ moeda, retorno, "Valor convertido");
   }
 
   converter.addEventListener("click", function(iso){
@@ -44,11 +48,15 @@ window.onload = function(){
     fetch(url, opcoes)
       .then(response => {response.json()
         .then(data => {
-          if(data['results']['currencies'][moedaConvertidaIso]['sell'] == null){
-            var cotacao = data['results']['currencies'][moedaConvertidaIso]['buy'];
+          var sell = data['results']['currencies'][moedaConvertidaIso]['sell'];
+          var buy = data['results']['currencies'][moedaConvertidaIso]['buy']
+
+          if( sell == null){
+            var cotacao = buy;
           }else{
-            var cotacao = data['results']['currencies'][moedaConvertidaIso]['sell'];
+            var cotacao = sell;
           }
+          
           conversao(cotacao, valor, moedaConvertidaIso);
         })
       });
